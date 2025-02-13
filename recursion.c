@@ -5,7 +5,6 @@
 
 #define TRUE 1
 #define FALSE 0
-#define INITIAL_DIRNAME_SIZE 80
 #define INITIAL_LEVEL 0
 
 void countdown(int initial_val) {
@@ -19,7 +18,7 @@ int fatorial(int val) {
         return val * fatorial(val - 1);
 }
 
-void read_dirs(const char* dirname, int dirname_size, int current_level) {
+void read_dirs(const char* dirname, int current_level) {
     if(dirname == NULL) {
         perror("dirname is null for some reason and God knows why, but I dont. Exiting...");
         exit(EXIT_FAILURE);
@@ -40,7 +39,7 @@ void read_dirs(const char* dirname, int dirname_size, int current_level) {
             strcpy(next_dir, dirname);
             strcat(next_dir, "/");
             strcat(next_dir, entry->d_name);
-            read_dirs(next_dir, dirname_size + 50, current_level + 1);
+            read_dirs(next_dir, current_level + 1);
         }
         
     }
@@ -50,5 +49,5 @@ void read_dirs(const char* dirname, int dirname_size, int current_level) {
 
 int main() {
     const char *dirname = "."; 
-    read_dirs(dirname, INITIAL_DIRNAME_SIZE, INITIAL_LEVEL);
+    read_dirs(dirname, INITIAL_LEVEL);
 }
