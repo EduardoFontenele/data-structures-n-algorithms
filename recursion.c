@@ -37,7 +37,6 @@ void read_dirs(const char* dirname, int dirname_size, int current_level) {
         printf("|%s %s\n",level, entry->d_name);
         int is_folder = strchr(entry->d_name, '.') == NULL ? TRUE : FALSE;
         if(is_folder == TRUE) {
-           
             strcpy(next_dir, dirname);
             strcat(next_dir, "/");
             strcat(next_dir, entry->d_name);
