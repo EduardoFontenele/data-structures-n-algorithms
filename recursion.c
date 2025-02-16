@@ -26,8 +26,8 @@ void read_dirs(const char* dirname, int current_level) {
     DIR* dir = opendir(dirname);
     struct dirent *entry;
 
-    char next_dir[123];
-    char level[100];
+    char next_dir[128];
+    char level[64];
     for(int i = 0; i <= current_level; i++) {
         strcat(level, "-");
     }
