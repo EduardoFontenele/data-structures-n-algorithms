@@ -25,25 +25,28 @@ function sumOfEvenNumbers(array) {
 // index 6 = prev + index = 15 + 6 = 21;
 // index N = prev + index = prev + N;
 
-// function triangularNumbers(numberPosition) {
-//     let index = 1;
-//     let previousValue = 0;
-
-//     while(index < numberPosition + 1) {
-//         previousValue = index + previousValue;
-//         index++;
-//     }
-
-//     return previousValue;
-// }
-
-
 function triangularNumbers(numberPosition) {
+    let index = 1;
+    let previousValue = 0;
+    while(index < numberPosition + 1) {
+        previousValue = index + previousValue;
+        index++;
+    }
+    return previousValue;
+}
+
+
+function triangularNumbers2(numberPosition) {
     if(numberPosition == 1) return 1;
-    let a;
-    if(numberPosition > 1) a = numberPosition + triangularNumbers(numberPosition - 1);
-    return a;
+    if(numberPosition > 1) return numberPosition + triangularNumbers(numberPosition - 1);
 }
 
 let result = triangularNumbers(6);
-console.log(result);
+console.log('without recursion:',result);
+
+result = triangularNumbers2(6);
+console.log('with recursion', result);
+
+function firstXOccurrence(array) {
+
+}

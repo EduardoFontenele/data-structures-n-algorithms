@@ -47,7 +47,28 @@ void read_dirs(const char* dirname, int current_level) {
     closedir(dir);
 }
 
+int triangular_numbers(int number_position) {
+    int i = 1;
+    int prev_val = 0;
+
+    while(i < number_position + 1) {
+        prev_val = i + prev_val;
+        i++;
+    }
+
+    return prev_val;
+}
+
+int triangular_numbers_recursive(int number_position) {
+    if (number_position == 1) return 1;
+    if(number_position > 1) return number_position + triangular_numbers(number_position - 1);
+}
+
 int main() {
-    const char *dirname = "."; 
-    read_dirs(dirname, INITIAL_LEVEL);
+    // const char *dirname = "."; 
+    // read_dirs(dirname, INITIAL_LEVEL);
+    int result = triangular_numbers_recursive(7);
+    printf("triangular numbers recursive (7): %d\n", result);
+    result = triangular_numbers(7);
+    printf("triangular numbers non-recursive (7): %d\n", result);
 }
