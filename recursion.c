@@ -26,14 +26,10 @@ void read_dirs(const char* dirname, int current_level) {
     DIR* dir = opendir(dirname);
     struct dirent *entry;
 
-    char next_dir[128];
-    char level[64];
-    for(int i = 0; i <= current_level; i++) {
-        strcat(level, "-");
-    }
+    char next_dir[200];
 
     while ((entry = readdir(dir)) != NULL) {
-        printf("|%s %s\n",level, entry->d_name);
+        printf("%s\n", entry->d_name);
         int is_folder = strchr(entry->d_name, '.') == NULL ? TRUE : FALSE;
         if(is_folder == TRUE) {
             strcpy(next_dir, dirname);
@@ -65,8 +61,8 @@ int triangular_numbers_recursive(int number_position) {
 }
 
 int main() {
-    // const char *dirname = "."; 
-    // read_dirs(dirname, INITIAL_LEVEL);
+    const char *dirname = "."; 
+    read_dirs(dirname, INITIAL_LEVEL);
     int result = triangular_numbers_recursive(7);
     printf("triangular numbers recursive (7): %d\n", result);
     result = triangular_numbers(7);
