@@ -14,4 +14,5 @@ int main() {
     }
     
     list_print(list);
+    list_destroy(list);
 }
