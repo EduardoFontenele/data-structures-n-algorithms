@@ -19,5 +19,6 @@ void list_print_reverse(const linked_list* list);
 void list_clear(linked_list* list);
 bool list_contains(const linked_list* list, int value);
 bool list_remove_value(linked_list* list, int value);
+void list_sort(linked_list*);
 
 #endif

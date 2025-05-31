@@ -1,6 +1,7 @@
 #include "linkedlist.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "quicksort.h"
 
 typedef struct node {
    int value;
@@ -232,4 +233,21 @@ void list_print_reverse(const linked_list* list) {
        current = current->previous;
    }
    printf("]");
+}
+
+void list_sort(linked_list* list) {
+    if(!list || !list->head) return;
+    size_t size = list->size;
+
+    int array[size];
+
+    node** current = &(list->head);
+
+    size_t iterator = 0;
+    while(*current) {
+        array[iterator] = (*current)->value;
+        *current = (*current)->next;
+        printf("%d\n", array[iterator]);
+        iterator++;
+    }
 }

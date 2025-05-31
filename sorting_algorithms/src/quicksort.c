@@ -1,27 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "quicksort.h"
 
-void quicksort(int[], int, int);
-void quicksort_helper(int[], int);
-
-int main() {
-    int* arr = (int[]){ 0, 5, 2, 1, 6, 3 };
-    size_t arr_size = 6;
-    for(int i = 0; i < arr_size; i++) {
-        printf("%d", arr[i]);
-    }
-
-    printf("\n");
-
-    quicksort_helper(arr, arr_size);
-    for(int i = 0; i < arr_size; i++) {
-        printf("%d", arr[i]);
-    }
-
-    printf("\n");
-}
-
-void quicksort(int arr[], int left_ptr, int right_ptr) {
+void sort(int arr[], int left_ptr, int right_ptr) {
     if(left_ptr >= right_ptr) return;
 
     int pivot_index = right_ptr;
@@ -51,10 +32,10 @@ void quicksort(int arr[], int left_ptr, int right_ptr) {
     arr[pivot_index] = arr[left_ptr];
     arr[left_ptr] = pivot;
 
-    quicksort(arr, 0, left_ptr - 1);
-    quicksort(arr, left_ptr + 1, pivot_index);
+    sort(arr, 0, left_ptr - 1);
+    sort(arr, left_ptr + 1, pivot_index);
 }
 
-void quicksort_helper(int arr[], int arr_size) {
-    quicksort(arr, 0, arr_size - 1);
+void quicksort(int arr[], size_t arr_size) {
+    sort(arr, 0, arr_size - 1);
 }
