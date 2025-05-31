@@ -125,7 +125,7 @@ void list_print(const linked_list* list) {
        }
        current = current->next;
    }
-   printf("]");
+   printf("]\n");
 }
 
 void list_clear(linked_list* list) {
@@ -237,17 +237,24 @@ void list_print_reverse(const linked_list* list) {
 
 void list_sort(linked_list* list) {
     if(!list || !list->head) return;
+
     size_t size = list->size;
-
     int array[size];
-
-    node** current = &(list->head);
-
     size_t iterator = 0;
+    node** current = &(list->head);
+    
     while(*current) {
         array[iterator] = (*current)->value;
-        *current = (*current)->next;
-        printf("%d\n", array[iterator]);
+        current = &(*current)->next;
         iterator++;
+    }
+
+    quicksort(array, iterator);
+
+    current = &(list->head);
+
+    for(size_t i = 0; i < iterator; i++) {
+        (*current)->value = array[i];
+        current = &(*current)->next;
     }
 }

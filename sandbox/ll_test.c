@@ -19,8 +19,12 @@ linked_list* lista = list_create();
    list_push(lista, 65);
    list_push(lista, 29);
    
+   printf("======== BEFORE SORTING ========\n");
+   list_print(lista);
    list_sort(lista);
-   
+   printf("======== AFTER SORTING ========\n");
+   list_print(lista);
+
    list_destroy(lista);
    return 0;
 }
